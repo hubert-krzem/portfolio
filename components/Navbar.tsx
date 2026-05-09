@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Navbar() {
     return (
-        <nav className="sticky top-0 z-50 bg-white border-b border-black">
+        <nav className="sticky top-0 z-50 bg-white border-b border-black font-satoshi">
             <div className="grid grid-cols-3 max-w-6xl mx-auto items-center p-4 w-full"> 
                 {/* LEFT: Logo */}
                 <div className="relative h-15 w-auto">
