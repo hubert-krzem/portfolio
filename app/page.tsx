@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Blob } from "../components/Blob";
 
 export default function Home() {
@@ -23,7 +24,15 @@ export default function Home() {
                 gradient={{ start: "rgb(238, 205, 163)", end: "rgb(239, 98, 159)", angle: 90 }}
                 className="absolute inset-0 w-full h-full z-0 scale-[1.3]"
               />
-              <p className="relative z-10 text-lg font-bold">LinkedIn</p>
+              <a href="https://linkedin.com/in/hubert-krzemieniewski">
+                <Image
+                  src="/LinkedIn_icon.svg"
+                  alt="LinkedIn logo"
+                  width={150}
+                  height={150}
+                  className="relative z-10"
+                />
+              </a>
             </div>
             <a href="https://linkedin.com/in/hubert-krzemieniewski" className="font-bold underline">
               Connect on LinkedIn →
@@ -41,9 +50,17 @@ export default function Home() {
                 gradient={{ start: "rgb(238, 205, 163)", end: "rgb(239, 98, 159)", angle: 90 }}
                 className="absolute inset-0 w-full h-full z-0 scale-[1.3]"
               />
-              <p className="relative z-10 text-lg font-bold">GitHub</p>
+              <a href="https://github.com/hubertkrzem">
+                <Image
+                  src="/GitHub_Invertocat_Black.svg"
+                  alt="GitHub logo"
+                  width={150}
+                  height={150}
+                  className="relative z-10 width-auto"
+                />
+              </a>
             </div>
-            <a href="https://github.com/hubert-krzem" className="font-bold underline">
+            <a href="https://github.com/hubertkrzem" className="font-bold underline">
               Check out my GitHub →
             </a>
           </div>
