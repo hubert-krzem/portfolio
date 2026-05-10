@@ -1,10 +1,37 @@
 import Image from "next/image";
 import { Blob } from "../components/Blob";
+import Button from "../components/Button";
 
 export default function Home() {
   return (
     <main>
-      <section id="hero">
+      <section id="hero" className="grid grid-cols-2 max-w-6xl mx-auto w-full px-4 py-16 min-h-[90vh]">
+        {/* LEFT: Text */}
+        <div className="flex flex-col gap-[20vh]">
+          {/* ROW 1: Title */}
+          <h1 className="text-5xl font-bold">Hubert Krzemieniewski<br/>Personal Portfolio</h1>
+
+          {/* ROW 2: Roles */}
+          <p className="text-4xl font-bold">Product Manager Intern<br/>IBM, Ireland</p>
+
+          {/* ROW 3: Buttons */}
+          <div className="flex flex-col gap-5 w-1/2">
+            <Button label="Get In Touch" link="#contact"/>
+            <Button label="Download CV" link="/redacted_Hubert_Krzemieniewski_CV.pdf"/>
+          </div>
+        </div>
+
+        {/* RIGHT: Blob */}
+        <div className="flex items-center justify-center">
+          <Blob
+            size={200}
+            points={8}
+            radius={70}
+            contrast={0.4}
+            gradient={{ start: "rgb(238, 205, 163)", end: "rgb(239, 98, 159)", angle: 90 }}
+            className="w-full h-full overflow-visible"
+          />
+        </div>
 
       </section>
 
@@ -22,7 +49,7 @@ export default function Home() {
                 radius={70}
                 contrast={0.4}
                 gradient={{ start: "rgb(238, 205, 163)", end: "rgb(239, 98, 159)", angle: 90 }}
-                className="absolute inset-0 w-full h-full z-0 scale-[1.3]"
+                className="absolute inset-0 w-full h-full z-0 scale-[1.3] overflow-visible"
               />
               <a href="https://linkedin.com/in/hubert-krzemieniewski">
                 <Image
@@ -48,7 +75,7 @@ export default function Home() {
                 radius={70}
                 contrast={0.4}
                 gradient={{ start: "rgb(238, 205, 163)", end: "rgb(239, 98, 159)", angle: 90 }}
-                className="absolute inset-0 w-full h-full z-0 scale-[1.3]"
+                className="absolute inset-0 w-full h-full z-0 scale-[1.3] overflow-visible"
               />
               <a href="https://github.com/hubertkrzem">
                 <Image

@@ -33,7 +33,7 @@ export default function Footer() {
                             <a href="https://linkedin.com/in/hubert-krzemieniewski">LinkedIn</a>
                         </li>
                         <li>
-                            <a href="https://github.com/hubert-krzem">Github</a>
+                            <a href="https://github.com/hubertkrzem">Github</a>
                         </li>
                     </ul>
 
