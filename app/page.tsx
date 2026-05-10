@@ -6,13 +6,14 @@ export default function Home() {
   return (
     <main>
       <section id="hero" className="grid grid-cols-2 max-w-6xl mx-auto w-full px-4 py-16 min-h-[90vh]">
+
         {/* LEFT: Text */}
-        <div className="flex flex-col gap-[20vh]">
+        <div className="flex flex-col gap-[20vh] font-bold">
           {/* ROW 1: Title */}
-          <h1 className="text-5xl font-bold">Hubert Krzemieniewski<br/>Personal Portfolio</h1>
+          <h1 className="text-5xl">Hubert Krzemieniewski<br/>Personal Portfolio</h1>
 
           {/* ROW 2: Roles */}
-          <p className="text-4xl font-bold">Product Manager Intern<br/>IBM, Ireland</p>
+          <p className="text-4xl">Product Manager Intern<br/>IBM, Ireland</p>
 
           {/* ROW 3: Buttons */}
           <div className="flex flex-col gap-5 w-1/2">
@@ -32,11 +33,11 @@ export default function Home() {
             className="w-full h-full overflow-visible"
           />
         </div>
-
+        
       </section>
 
       <section id="contact" className="max-w-6xl mx-auto p-4 w-full">
-        <h2 className="text-3xl font-bold underline">Get in touch</h2>
+        <h2 className="text-4xl font-bold underline">Get in touch</h2>
 
         <div className="grid grid-cols-2 py-16 text-xl">
 
