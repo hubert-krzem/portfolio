@@ -84,7 +84,7 @@ export default function Home() {
                   alt="GitHub logo"
                   width={150}
                   height={150}
-                  className="relative z-10 width-auto"
+                  className="relative z-10"
                 />
               </a>
             </div>

@@ -51,7 +51,7 @@ export default function Footer() {
 
                      <ul> {/* Column 3 */}
                         <li>
-                            <a href="#top">Back to top</a>
+                            <a href="#top" className="scroll-smooth">Back to top</a>
                         </li>
                     </ul>
 
