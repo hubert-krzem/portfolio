@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useId, type SVGProps } from "react";
+import { useState, useEffect, useRef, useId, type SVGProps } from "react";
 
 export interface BlobOptions {
   points?: number;
@@ -16,9 +16,8 @@ interface Point {
   y: number;
 }
 
-function generateBlobPath(options: Pick<BlobOptions, "points" | "radius" | "contrast"> = {}): string {
+function generateAnchors(options: Pick<BlobOptions, "points" | "radius" | "contrast"> = {}): Point[] {
   const { points = 8, radius = 30, contrast = 0.7 } = options;
-
   const anchors: Point[] = [];
   for (let i = 0; i < points; i++) {
     const angle = (2 * Math.PI * i) / points;
@@ -26,7 +25,10 @@ function generateBlobPath(options: Pick<BlobOptions, "points" | "radius" | "cont
     const r = radius * offset;
     anchors.push({ x: r * Math.cos(angle), y: r * Math.sin(angle) });
   }
+  return anchors;
+}
 
+function buildPath(anchors: Point[]): string {
   const tension = 0.25;
   const n = anchors.length;
   const first = anchors[0];
@@ -69,9 +71,33 @@ export function Blob({
   const id = useId();
   const gradientId = `blob-grad-${id}`;
 
+  const pathRef = useRef<SVGPathElement>(null);
   const [d, setD] = useState("");
+
   useEffect(() => {
-    setD(generateBlobPath({ points, radius, contrast }));
+    const baseAnchors = generateAnchors({ points, radius, contrast });
+    const phases = baseAnchors.map(() => ({
+      x: Math.random() * Math.PI * 2,
+      y: Math.random() * Math.PI * 2,
+    }));
+
+    setD(buildPath(baseAnchors));
+
+    let animId: number;
+    const AMPLITUDE = 5;
+
+    const animate = (t: number) => {
+      const time = t / 3000;
+      const animated = baseAnchors.map((p, i) => ({
+        x: p.x + Math.sin(time * 0.8 + phases[i].x) * AMPLITUDE,
+        y: p.y + Math.cos(time * 0.7 + phases[i].y) * AMPLITUDE,
+      }));
+      pathRef.current?.setAttribute("d", buildPath(animated));
+      animId = requestAnimationFrame(animate);
+    };
+
+    animId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animId);
   }, [points, radius, contrast, seed]);
 
   const center = size / 2;
@@ -109,7 +135,7 @@ export function Blob({
       {...svgProps}
     >
       {gradientEl}
-      <path fill={fillValue} d={d} transform={`translate(${center} ${center})`} />
+      <path ref={pathRef} fill={fillValue} d={d} transform={`translate(${center} ${center})`} />
     </svg>
   );
 }
