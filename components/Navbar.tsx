@@ -6,7 +6,7 @@ export default function Navbar() {
         <nav className="sticky top-0 z-50 bg-white border-b border-black font-satoshi">
             <div className="grid grid-cols-3 max-w-6xl mx-auto items-center p-4 w-full"> 
                 {/* LEFT: Logo */}
-                <div className="relative h-15 w-auto">
+                <div className="relative h-15 w-fit">
                     <Link href="/">
                         <Image
                             src="/logo-hk.svg"
@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div>
                     <ul className="flex justify-center space-x-10 text-black text-xs font-bold">
                         <li><Link href="/portfolio">Portfolio</Link></li>
-                        <li><Link href="/about">Expierience</Link></li>
+                        <li><Link href="/about">Experience</Link></li>
                         <li><a href="/redacted_Hubert_Krzemieniewski_CV.pdf">Resume</a></li>
                     </ul>
                 </div>

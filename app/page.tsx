@@ -8,7 +8,7 @@ export default function Home() {
       <section id="hero" className="grid grid-cols-2 max-w-6xl mx-auto w-full px-4 py-16 min-h-[90vh]">
 
         {/* LEFT: Text */}
-        <div className="flex flex-col gap-[20vh] font-bold">
+        <div className="flex flex-col gap-[20vh] font-bold justify-center">
           {/* ROW 1: Title */}
           <h1 className="text-5xl">Hubert Krzemieniewski<br/>Personal Portfolio</h1>
 
@@ -33,7 +33,7 @@ export default function Home() {
             className="w-full h-full overflow-visible"
           />
         </div>
-        
+
       </section>
 
       <section id="contact" className="max-w-6xl mx-auto p-4 w-full">
