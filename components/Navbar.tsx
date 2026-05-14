@@ -1,40 +1,140 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-    return (
-        <nav className="sticky top-0 z-50 bg-white border-b border-black font-satoshi">
-            <div className="grid grid-cols-3 max-w-6xl mx-auto items-center p-4 w-full"> 
-                {/* LEFT: Logo */}
-                <div className="relative h-15 w-fit">
-                    <Link href="/">
-                        <Image
-                            src="/logo-hk.svg"
-                            alt="Site logo, black lowercase letters, h and k"
-                            width={82}
-                            height={63}
-                            className="w-auto object-contain cursor-pointer"
-                            priority
-                        />
-                    </Link>
-                </div>
+    const [menuOpen, setMenuOpen] = useState(false);
+    const pathname = usePathname();
 
-                {/* CENTER: Nav links */}
-                <div>
-                    <ul className="flex justify-center space-x-10 text-black text-xs font-bold">
-                        <li><Link href="/portfolio">Portfolio</Link></li>
-                        <li><Link href="/about">Experience</Link></li>
-                        <li><a href="/redacted_Hubert_Krzemieniewski_CV.pdf">Resume</a></li>
-                    </ul>
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [menuOpen]);
+
+    const navLinks = [
+        { label: "Home", href: "/", external: false },
+        { label: "Portfolio", href: "/portfolio", external: false },
+        { label: "Experience", href: "/about", external: false },
+        { label: "Resume", href: "/redacted_Hubert_Krzemieniewski_CV.pdf", external: true },
+    ];
+
+    return (
+        <>
+            <nav className="sticky top-0 z-50 bg-white border-b border-black font-satoshi">
+                <div className="grid grid-cols-3 max-w-6xl mx-auto items-center p-4 w-full">
+                    {/* LEFT: Logo */}
+                    <div className="relative h-15 w-fit">
+                        <Link href="/">
+                            <Image
+                                src="/logo-hk.svg"
+                                alt="Site logo, black lowercase letters, h and k"
+                                width={82}
+                                height={63}
+                                className="w-auto object-contain cursor-pointer"
+                                priority
+                            />
+                        </Link>
+                    </div>
+
+                    {/* CENTER: Nav links — hidden on mobile */}
+                    <div className="hidden md:block">
+                        <ul className="flex justify-center space-x-10 text-black text-xs font-bold">
+                            <li><Link href="/portfolio">Portfolio</Link></li>
+                            <li><Link href="/about">Experience</Link></li>
+                            <li><a href="/redacted_Hubert_Krzemieniewski_CV.pdf">Resume</a></li>
+                        </ul>
+                    </div>
+
+                    {/* RIGHT: Contact (desktop) / Index toggle (mobile) */}
+                    <div>
+                        <ul className="hidden md:flex justify-end space-x-3 text-black text-xs font-bold">
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                        <div className="md:hidden flex justify-end">
+                            <button
+                                onClick={() => setMenuOpen(true)}
+                                className="text-black text-xs font-bold"
+                            >
+                                Index
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                
-                {/* RIGHT: Socials */}
-                <div>
-                    <ul className="flex justify-end space-x-3 text-black text-xs font-bold">
-                        <li><a href="#socials">Socials</a></li>
-                    </ul>
+            </nav>
+
+            {/* Mobile slide-in menu */}
+            <div className={`md:hidden fixed inset-0 z-100 ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
+                {/* Backdrop */}
+                <div
+                    className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0"}`}
+                    onClick={() => setMenuOpen(false)}
+                />
+
+                {/* Panel */}
+                <div className={`absolute top-0 right-0 w-[78%] h-full bg-white flex flex-col transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+                    {/* Close button — height matches navbar so divider aligns with navbar bottom */}
+                    <div className="flex items-center justify-end px-6 h-23">
+                        <button
+                            onClick={() => setMenuOpen(false)}
+                            className="text-black text-2xl leading-none"
+                            aria-label="Close menu"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    {/* Top divider */}
+                    <div className="h-px bg-black/20 mx-4" />
+
+                    {/* Nav links */}
+                    <div className="flex-1 flex flex-col items-end px-8 pt-8 gap-8">
+                        {navLinks.map((link) => {
+                            const isActive = !link.external && pathname === link.href;
+                            return (
+                                <div key={link.href} className="flex flex-col items-end">
+                                    {link.external ? (
+                                        <a
+                                            href={link.href}
+                                            onClick={() => setMenuOpen(false)}
+                                            className="text-[1.75rem] text-black font-satoshi"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            href={link.href}
+                                            onClick={() => setMenuOpen(false)}
+                                            className="text-[1.75rem] text-black font-satoshi"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    )}
+                                    {isActive && (
+                                        <div className="h-0.5 w-full bg-linear-to-r from-[rgb(239,98,159)] to-[rgb(238,205,163)]" />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Bottom divider */}
+                    <div className="h-px bg-black/20 mx-4" />
+
+                    {/* Contact */}
+                    <div className="flex justify-end px-8 py-5">
+                        <a
+                            href="/#contact"
+                            onClick={() => setMenuOpen(false)}
+                            className="text-[1.75rem] text-black font-satoshi"
+                        >
+                            Contact
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-    )
+        </>
+    );
 }
