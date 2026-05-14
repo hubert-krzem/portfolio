@@ -8,17 +8,17 @@ export default function Home() {
       <section id="hero" className="grid grid-cols-2 max-w-6xl mx-auto w-full px-4 py-16 min-h-[90vh]">
 
         {/* LEFT: Text */}
-        <div className="flex flex-col gap-[20vh] font-bold justify-center">
+        <div className="flex flex-col gap-[20vh] justify-center">
           {/* ROW 1: Title */}
-          <h1 className="text-5xl">Hubert Krzemieniewski<br/>Personal Portfolio</h1>
+          <h1 className="text-5xl font-bold">Hubert Krzemieniewski<br/>Portfolio</h1>
 
           {/* ROW 2: Roles */}
           <p className="text-4xl">Product Manager Intern<br/>IBM, Ireland</p>
 
           {/* ROW 3: Buttons */}
-          <div className="flex flex-col gap-5 w-1/2">
-            <Button label="Get In Touch" link="#contact"/>
-            <Button label="Download CV" link="/redacted_Hubert_Krzemieniewski_CV.pdf"/>
+          <div className="flex flex-col gap-5 w-1/2 font-bold">
+            <Button label="Download CV" link="/redacted_Hubert_Krzemieniewski_CV.pdf" className="hover:bg-gray-100"/>
+            <Button label="Get In Touch" link="#contact" className="bg-black text-white hover:bg-mist-800 hover:border-black"/>
           </div>
         </div>
 

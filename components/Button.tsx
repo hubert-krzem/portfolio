@@ -8,22 +8,21 @@ export interface ButtonOptions {
 
 type ButtonProps = ButtonOptions & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const className = `py-4 bg-white text-black rounded-full border
-                   hover:bg-gray-100 transition-colors
-                   focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2
-                   font-bold text-2xl text-center`;
+const baseClassName = `py-4 rounded-full border focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-bold text-2xl text-center  transition-colors`;
 
-export default function Button({ label, link, ...props }: ButtonProps) {
+export default function Button({ label, link, className, ...props }: ButtonProps) {
+  const combinedClassName = `${baseClassName} ${className ?? ""}`.trim();
+
   if (link) {
     return (
-      <Link href={link} className={className}>
+      <Link href={link} className={combinedClassName}>
         {label}
       </Link>
     );
   }
 
   return (
-    <button {...props} className={className}>
+    <button {...props} className={combinedClassName}>
       {label}
     </button>
   );
