@@ -49,7 +49,7 @@ export default function Navbar() {
                     </div>
 
                     {/* RIGHT: Contact (desktop) / Index toggle (mobile) */}
-                    <div>
+                    <div className="col-start-3">
                         <ul className="hidden md:flex justify-end space-x-3 text-black text-xs font-bold">
                             <li><a href="/#contact">Contact</a></li>
                         </ul>
@@ -124,7 +124,7 @@ export default function Navbar() {
                     <div className="h-px bg-black/20 mx-4" />
 
                     {/* Contact */}
-                    <div className="flex justify-end px-8 py-5">
+                    <div className="flex items-center justify-end px-8 h-23">
                         <a
                             href="/#contact"
                             onClick={() => setMenuOpen(false)}
