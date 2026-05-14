@@ -39,7 +39,7 @@ export default function Home() {
       </section>
 
       {/* CTAs — mobile below-fold fallback for short screens (<720px) */}
-      <div className="flex [@media(min-height:720px)]:hidden md:hidden flex-col gap-5 font-bold w-full max-w-6xl mx-auto px-4 py-12">
+      <div className="flex [@media(min-height:750px)]:hidden md:hidden flex-col gap-5 font-bold w-full max-w-6xl mx-auto px-4 pt-6 pb-12">
         <Button label="Download CV" link="/redacted_Hubert_Krzemieniewski_CV.pdf" className="hover:bg-gray-100"/>
         <Button label="Get In Touch" link="#contact" className="bg-black text-white hover:bg-mist-800 hover:border-black"/>
       </div>
