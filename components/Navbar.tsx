@@ -56,7 +56,7 @@ export default function Navbar() {
                         <div className="md:hidden flex justify-end">
                             <button
                                 onClick={() => setMenuOpen(true)}
-                                className="text-black text-xs font-bold"
+                                className="text-black text-xs font-bold p-4 -m-4"
                             >
                                 Index
                             </button>
@@ -79,7 +79,7 @@ export default function Navbar() {
                     <div className="flex items-center justify-end px-6 h-23">
                         <button
                             onClick={() => setMenuOpen(false)}
-                            className="text-black text-2xl leading-none"
+                            className="text-black text-2xl leading-none p-4 -m-4"
                             aria-label="Close menu"
                         >
                             ×
