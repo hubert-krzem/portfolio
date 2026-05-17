@@ -6,22 +6,24 @@ export default function Footer() {
         <footer className="bg-white border-t border-black font-satoshi">
 
             {/* MOBILE (hidden at md+) */}
-            <div className="md:hidden pt-4 py-16 px-6 pb-8 space-y-10">
+            <div className="md:hidden pt-4 px-6 pb-8 space-y-6">
 
-                <div className="flex flex-col font-bold underline">
-                    <Link href="/portfolio" className="text-lg py-2">Portfolio</Link>
-                    <a href="/about" className="text-lg py-2">Experience</a>
-                    <Link href="/redacted_Hubert_Krzemieniewski_CV.pdf" className="text-lg py-2">Resume</Link>
+                {/* Two-column links */}
+                <div className="grid grid-cols-2">
+                    <div className="flex flex-col font-bold underline">
+                        <Link href="/portfolio" className="text-lg py-2">Portfolio</Link>
+                        <a href="/about" className="text-lg py-2">Experience</a>
+                        <Link href="/redacted_Hubert_Krzemieniewski_CV.pdf" className="text-lg py-2">Resume</Link>
+                    </div>
+                    <div className="flex flex-col items-left font-bold underline">
+                        <a href="https://linkedin.com/in/hubert-krzemieniewski" className="text-lg py-2">LinkedIn</a>
+                        <a href="https://github.com/hubertkrzem" className="text-lg py-2">Github</a>
+                    </div>
                 </div>
 
-                <div className="flex flex-col font-bold underline">
-                    <a href="https://linkedin.com/in/hubert-krzemieniewski" className="text-lg py-2">LinkedIn</a>
-                    <a href="https://github.com/hubertkrzem" className="text-lg py-2">Github</a>
-                </div>
+                <a href="#top" className="block text-lg font-bold underline pb-2 text-center scroll-smooth">↑ Back to top</a>
 
-                <a href="#top" className="block text-lg font-bold underline py-2 scroll-smooth">Back to top</a>
-
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-center gap-4">
                     <Link href="/" className="block shrink-0">
                         <Image
                             src="/logo-hk.svg"
