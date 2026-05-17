@@ -1,15 +1,28 @@
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Footer() {
     return (
         <footer className="bg-white border-t border-black font-satoshi">
-            <div className="grid grid-cols-2 max-w-6xl mx-auto items-center p-4 w-full">
 
-                {/* LEFT: Logo*/}
-                <div className="flex items-center space-x-4">
-                    {/* Logo image */}
-                    <Link href="/">
+            {/* MOBILE (hidden at md+) */}
+            <div className="md:hidden pt-4 py-16 px-6 pb-8 space-y-10">
+
+                <div className="flex flex-col font-bold underline">
+                    <Link href="/portfolio" className="text-lg py-2">Portfolio</Link>
+                    <a href="/about" className="text-lg py-2">Experience</a>
+                    <Link href="/redacted_Hubert_Krzemieniewski_CV.pdf" className="text-lg py-2">Resume</Link>
+                </div>
+
+                <div className="flex flex-col font-bold underline">
+                    <a href="https://linkedin.com/in/hubert-krzemieniewski" className="text-lg py-2">LinkedIn</a>
+                    <a href="https://github.com/hubertkrzem" className="text-lg py-2">Github</a>
+                </div>
+
+                <a href="#top" className="block text-lg font-bold underline py-2 scroll-smooth">Back to top</a>
+
+                <div className="flex items-center gap-4">
+                    <Link href="/" className="block shrink-0">
                         <Image
                             src="/logo-hk.svg"
                             alt="Site logo, lowercase h and k"
@@ -18,45 +31,54 @@ export default function Footer() {
                             className="h-15 w-auto object-contain cursor-pointer"
                         />
                     </Link>
-                        
-                    {/* Copyright disclaimer */}
-                    <ul className="text-black text-xs font-bold"> 
+                    <ul className="text-black text-xs font-bold">
                         <li>© 2026 Hubert Krzemieniewski.</li>
                         <li>All rights reserved.</li>
                     </ul>
                 </div>
 
-                {/* RIGHT: Links*/}
-                <div className="flex justify-end space-x-10 text-black text-xs font-bold text-right underline">
-                    <ul> {/* Column 1 */}
-                        <li>
-                            <a href="https://linkedin.com/in/hubert-krzemieniewski">LinkedIn</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/hubertkrzem">Github</a>
-                        </li>
-                    </ul>
+            </div>
 
-                     <ul> {/* Column 2 */}
-                        <li>
-                            <Link href="/portfolio">Portfolio</Link>
-                        </li>
-                        <li>
-                            <a href="/about">Experience</a>
-                        </li>
-                        <li>
-                            <Link href="/redacted_Hubert_Krzemieniewski_CV.pdf">Resume</Link>
-                        </li>
-                    </ul>
+            {/* DESKTOP (hidden below md) */}
+            <div className="hidden md:block">
+                <div className="grid grid-cols-2 max-w-6xl mx-auto items-center p-4 w-full">
 
-                     <ul> {/* Column 3 */}
-                        <li>
-                            <a href="#top" className="scroll-smooth">Back to top</a>
-                        </li>
-                    </ul>
+                    {/* LEFT: Logo + copyright */}
+                    <div className="flex items-center space-x-4">
+                        <Link href="/">
+                            <Image
+                                src="/logo-hk.svg"
+                                alt="Site logo, lowercase h and k"
+                                width={82}
+                                height={63}
+                                className="h-15 w-auto object-contain cursor-pointer"
+                            />
+                        </Link>
+                        <ul className="text-black text-xs font-bold">
+                            <li>© 2026 Hubert Krzemieniewski.</li>
+                            <li>All rights reserved.</li>
+                        </ul>
+                    </div>
+
+                    {/* RIGHT: Links */}
+                    <div className="flex justify-end space-x-10 text-black text-xs font-bold text-right underline">
+                        <ul>
+                            <li><a href="https://linkedin.com/in/hubert-krzemieniewski">LinkedIn</a></li>
+                            <li><a href="https://github.com/hubertkrzem">Github</a></li>
+                        </ul>
+                        <ul>
+                            <li><Link href="/portfolio">Portfolio</Link></li>
+                            <li><a href="/about">Experience</a></li>
+                            <li><Link href="/redacted_Hubert_Krzemieniewski_CV.pdf">Resume</Link></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#top" className="scroll-smooth">Back to top</a></li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
+
         </footer>
     );
 }
